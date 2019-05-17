@@ -14,14 +14,19 @@ router.get('/', async (req, res) => {
     }
 });
 
+//GET post BY ID
 router.get('/:id', validatePostId, (req, res) => {
     res.status(200).json(req.post)
 });
 
-router.delete('/:id', (req, res) => {
 
+//DELETE
+router.delete('/:id', validatePostId, async (req, res) => {
+    const removePost = await Posts.remove(req.params.id);
+    res.status(200).json(removePost)
 });
 
+//PUT
 router.put('/:id', (req, res) => {
 
 });
