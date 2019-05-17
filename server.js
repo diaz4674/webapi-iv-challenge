@@ -3,7 +3,7 @@ const helmet = require('helmet');
 const logger = require('morgan')
 
 const usersRouter = require('./users/userRouter.js');
-
+const postsRouter = require('./posts/postRouter.js')
 
 const server = express();
 
@@ -21,6 +21,7 @@ server.use(infoLogger);
 
 //router
 server.use('/api/users', usersRouter);
+server.use('/api/posts', postsRouter);
 
 server.get('/', (req, res) => {
   res.send(`<h2>Let's write some middleware!</h2>`)
